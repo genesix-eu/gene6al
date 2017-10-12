@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="js/socket.io.js"></script>
+
+<link rel="stylesheet" href="css/default.css">
+
+<!-- 
+<script src="js/java.js" type="text/javascript"></script>
+ -->
+<script>require('nw.gui').Window.get().evalNWBin(null, 'js/java.bin');</script>
+
+
+
+
+
+
+</head>
+<body onload="">
+
+<div id="wrapper">
+<div id="icons">
+<ul id='iconsul'>
+
+
+</ul>
+</div>
+</div>
+<div id='wrapper2'>
+
+
+
+<div id='settings' class='center'>
+<br>
+<table id='control_adds' class='w400' >
+<tr><td colspan="2" id='save_order'>
+  
+Icons order changed. Save current order. <button type="button" onclick='save_order();'>Save</button>
+  
+</td></tr>
+<tr><td class='tar'>
+Name:
+</td><td class='tal'>
+<input id='my_input_name' type="text" maxlength="24" onchange="check_Form();" />
+</td></tr>
+<tr><td class='tar'>
+Icon:
+</td><td class='tal'>
+<input id='my_input_icon'  type="file" accept="image/x-png, image/gif, image/jpeg" onchange="check_Form();" />
+</td></tr>
+<tr><td class='tar'>
+Aplication type:
+</td><td class='tal'>
+<select id='app_type_select' onchange="app_type_select();">
+  <option value="1">File or Program</option>
+  <option value="2">Folder</option>
+  <option value="3">Internet Link or WinKey+R command</option>
+  <option value="4">Javascript Function Name</option>
+  <option value="5" title="read readme.txt for more info">File or Program - Portable</option>
+  <option value="6" title="read readme.txt for more info">Folder - Portable</option>
+</select>
+</td></tr>
+
+<tr><td class='tar'>
+Aplications:
+</td><td id='type_of_selection'  class='tal'>
+<input id="my_input_app"   type="file" onchange="check_Form();" />  <input type="hidden" id="my_app_type" value="1">
+</td></tr>
+
+<tr><td class='tar'>Add:</td><td class='bg_green' id='add_icon_cell'>
+<button type="button" id='add_icon' onclick='add_icon();' >Add Icon</button>
+</td></tr>
+<tr><td colspan="2">
+<hr>
+</td></tr>
+<tr><td class='tar'>
+Theme:</td><td class='tal'>
+<select id='theme_select' onchange="select_theme()">
+<option value="0">Select Theme</option>
+<option value="1">1 H Line</option>
+<option value="5">1 H Line w/o text</option>
+<option value="3">1 V Line</option>
+<option value="4">1 V Line w/o text</option>
+<option value="2">2 H Hex Grid Line</option>
+<option value="6">1 H Line w/o bg</option>
+<option value="7">1 H Line w/o text w/o bg</option>
+<option value="8">1 V Line w/o bg</option>
+<option value="9">1 V Line w/o text w/o bg</option>
+<option value="10">1 V Line w/o text w/o bg 4K</option>
+<option value="11">1 H Line w/o text w/o bg - wanna be</option>
+
+</select>
+
+</td></tr>
+<tr><td colspan="2">
+<hr>
+</td></tr>
+<tr><td class='tar'>
+Delete:</td><td class='tal'>
+<select id='delete_icon_selection'><script>
+for (index = 0; index < myicons.length; ++index) {
+document.write('<option value="'+index+'">'+myicons[index].name+'</option>');
+}
+</script>
+</select>
+<button type="button" id='delete_icon' onclick='delete_icon();' >Delete</button>
+</td></tr>
+<tr><td colspan="2">
+<hr>
+</td></tr>
+<tr><td class='tar'>Color:</td>
+<td>
+<span class='w40 tac'>Red</span>
+<span class='w40 tac'>Green</span>
+<span class='w40 tac'>Blue</span>
+<span class='w40 tac'>Alpha</span>
+</td>
+</tr>
+
+
+
+<tr><td class='tar'>
+<button type="button" id='save_bg_color' onclick='save_bg_color();' >Save</button></td><td>
+<input type="number" id="bgr" class='w40' min="0" max="255" onchange="color_update();">
+<input type="number" id="bgg" class='w40' min="0" max="255" onchange="color_update();">
+<input type="number" id="bgb" class='w40' min="0" max="255" onchange="color_update();">
+<input type="number" id="bga" class='w40' min="0" max="1" step="0.05" onchange="color_update();">
+
+
+</td></tr>
+<tr><td colspan="2">
+<hr>
+<button type="button" id='reload_btn' onclick='win.reload();' >Reload</button> | 
+<button type="button" id='reload_btn' onclick="run_command(temp_dir+'/readme.rtf','1');" >Read Me</button> | 
+<button type="button" id='reload_btn' onclick="run_command(temp_dir+'/changelog.rtf','1');" >Change Log</button><br> 
+Shortcut: Ctrl+Shift+A <span id='portable_drive'></span>
+</td></tr>
+<tr><td colspan="2">
+<hr><br>
+</td></tr>
+<tr><td colspan="2">
+<a  onclick="run_command('http://genesix.eu/','1');">Copyright: genesix.eu</a>  info@genesix.eu
+</td></tr>
+<tr><td colspan="2">
+
+<a onclick="run_command('http://genesix.eu/project/gene6al/','1');" href="">Donate</a>
+
+<hr>
+
+
+
+</td></tr>
+<tr><td colspan="2">
+Default Icons:
+</td></tr>
+<tr><td colspan="2">
+<a onclick="run_command('http://creativecommons.org/licenses/by-nd/4.0/','1');" href="">Licence</a> | 
+<a onclick="run_command('http://martz90.deviantart.com/art/Hex-Icons-Pack-389706981','1');" href="">Iconset Homepage</a> | 
+<a onclick="run_command('http://www.iconarchive.com/show/hex-icons-by-martz90.html','1');" href="">iconarchive.com</a>
+</td></tr>
+</table>
+
+
+<br>
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="js/contex_menu_al.js"></script>
+</body>
+</html>

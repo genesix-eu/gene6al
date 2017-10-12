@@ -1,0 +1,11 @@
+footer A:link {text-decoration: none; color: green;}
+footer A:visited {text-decoration: none; color: green;}
+footer A:active {text-decoration: none; color: green;}
+footer A:hover {text-decoration: none; color: lime;}
+
+a:-webkit-any-link{
+text-decoration: none; color: green;
+
+
+	
+}

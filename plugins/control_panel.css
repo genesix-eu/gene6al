@@ -1,0 +1,278 @@
+body{
+overflow: hidden;
+-webkit-user-select: none;
+cursor: default;
+font-size: 16px
+}
+
+.control
+{
+position:absolute;
+top:0px;
+left:0px;
+height: 552px;
+width: 792px;
+min-height:400px;
+min-width:500px;
+overflow:hidden;
+background-color:rgba(0,0,0,0.8);
+padding:10px;
+border-style:solid;
+border-width:1px;
+border-color: lime;
+z-index:10;
+color:gray;
+}
+
+#control_top
+{
+display: inline-block;
+background-color:rgba(0,0,0, 0.3);
+height:33px;
+width: 100%;
+min-width:500px;
+position:absolute;
+top:-3px;
+left:0px;
+}
+
+#control_left
+{
+display: inline-block;
+position:relative;
+float:left;
+background-color:rgba(0,0,0, 0.3);
+height:458px;
+min-height:370px;
+width:180px;
+border-bottom-right-radius:5px;
+text-align:left;
+position:absolute;
+top:30px;
+left:-3px;
+}
+
+#alert_text
+{
+position:relative;
+float:right;
+width:570px;
+min-height:20px;
+padding:10px;
+overflow:auto;
+position:absolute;
+top:30px;
+right:0px;
+color:lime;
+z-index: 150;
+}
+
+#control_content
+{
+position:relative;
+float:right;
+height:458px;
+width:570px;
+min-height:390px;
+min-width:300px;
+padding:10px;
+overflow:auto;
+position:absolute;
+top:30px;
+right:0px;
+color:lime;
+z-index: 15;
+}
+
+.footer{
+position: absolute;
+bottom: 10px;
+width: 100%;
+text-align: center;
+}
+
+.w250{
+width:250px;
+}
+
+.top_left {
+position: relative;
+top:0;
+left: 0;
+height: 33px;
+text-align: center;
+z-index: 50;
+}
+.top_right {
+position: fixed;
+top: 1px;
+right: 1px;
+z-index: 100;
+}
+
+#ctrl_title{
+  color: lime;
+  margin: auto auto;
+  z-index: 51;
+  position: relative;
+  top: 9px;
+  padding: 5px 50px;
+  -webkit-app-region: drag;
+  cursor: default;
+}
+
+.tbutton.folderfav
+{
+width: 150px;
+text-align: left;
+color:lime;
+}
+
+.cntrl_table{
+display: none;
+
+}
+
+
+.center{
+margin: 0 auto;
+display:inline-block; 
+}
+
+
+#save_order{display:none;}
+#add_icon_cell{display:none;}
+.bg_green{background:green;}
+
+.w400{
+width: 400px;
+display:inline-block; 
+border: 1px solid black;
+}
+
+.tal{text-align:left;}
+.tar{text-align:right;}
+.tac{text-align:center;}
+
+.w100p{width:100%;}
+.w55{width: 55px;display:inline-block; }
+.w30{width: 30px;}
+
+.p5{padding: 5px}
+
+
+
+#save_bg_color{display:none; color: black;}
+
+A:link {text-decoration: none; color: green;}
+A:visited {text-decoration: none; color: green;}
+A:active {text-decoration: none; color: green;}
+A:hover {text-decoration: none; color: lime;}
+
+a:-webkit-any-link{
+//text-decoration: none;
+//color: green;
+}
+
+
+
+
+
+
+
+/* start .slideThree */
+.slideThree {
+  width: 80px;
+  height: 26px;
+  background: #333;
+  display: inline-block;
+  position: relative;
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.slideThree:after {
+  content: 'OFF';
+  color: #000;
+  position: absolute;
+  right: 10px;
+  z-index: 0;
+  font: 12px/26px Arial, sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+}
+.slideThree:before {
+  content: 'ON';
+  color: #27ae60;
+  position: absolute;
+  left: 10px;
+  z-index: 0;
+  font: 12px/26px Arial, sans-serif;
+  font-weight: bold;
+}
+.slideThree label {
+  display: block;
+  width: 34px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  z-index: 1;
+  background: #fcfff4;
+  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  border-radius: 50px;
+  -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+.slideThree input[type=checkbox] {
+  visibility: hidden;
+}
+.slideThree input[type=checkbox]:checked + label {
+  left: 43px;
+}
+
+/* end .slideThree */
+
+
+/***** Load at end *****/
+.c_lime{
+color:lime;
+}
+
+.tcb{
+color:black;
+}
+
+.tcr{
+color:red;
+}
+
+.tcl{
+color:lime;
+}
+
+.d_ilb{
+display: inline-block;
+}
+
+.w170{
+width: 170px;
+}
+
+.custom_button_color1{
+color: lime;
+background: none repeat scroll 0 0 rgba(255,255,255,0.04);
+
+}
+.custom_button_color1:hover, .custom_button_color1:focus, .custom_button_color1:active{
+color: white;
+}
+.custom_button_color1_active{
+color: white;
+}
+
+.d_none{
+display: none;
+}

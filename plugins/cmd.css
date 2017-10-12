@@ -1,0 +1,135 @@
+body{
+position: fixed;
+overflow: hidden;
+width: 100%;
+border: 0;
+padding: 0;  
+top: -8px;
+left: -8px;
+}
+
+
+#wrapper{
+height: 550px;
+margin: 0;
+padding: 0;
+position: relative;
+border-style:solid;
+border-width:1px;
+border-color: lime;
+}
+
+#terminalw
+{
+position: relative;
+top: -4px;
+height: 478px;
+margin:0;
+background-color: rgba(0,0,0, 0.8);
+padding:0;
+padding-top: 15px;
+color:#77bc1f;
+text-decoration:none;
+font-size:110%;
+overflow-x:hidden;
+overflow-y:auto;
+display: block;
+z-index: 5;
+}
+
+
+#terminalw::-webkit-scrollbar { 
+    display: none; 
+}
+
+#command_input
+{
+width: 100%;
+background-color: rgba(0,0,0, 1);
+outline: 0;
+padding: 0;
+margin: 0;
+overflow:hidden;
+border:none;
+color:lime;
+border: 0;
+outline: none;
+position: relative;
+top: -6px;
+z-index: 10;
+height: 26px;
+}
+
+
+
+
+
+#cmd_top
+{
+width: 100%;
+color: lime;
+display: inline-block;
+background-color: rgba(0,0,0, 0.95);
+height:33px;
+min-width:500px;
+position:relative;
+margin:0;
+padding:0;
+top:0px;
+left:0px;
+text-align: center;
+-webkit-app-region: drag;
+cursor: default;
+-webkit-user-select: none;
+z-index: 11;
+overflow: hidden;
+}
+
+.comm{
+-webkit-appearance: textarea;
+margin: 0;
+padding: 0 15px;
+white-space: pre;
+width: 100%;
+background-color: transparent;
+color: lime;
+border: 0;
+outline: none;
+resize: none;
+}
+
+.comm::-webkit-scrollbar { 
+    display: none; 
+}
+
+.dnone{
+	display: none;
+}
+
+
+.top_left {
+position: relative;
+top:0;
+left: 0;
+height: 33px;
+text-align: center;
+z-index: 50;
+}
+.top_right {
+position: fixed;
+top: 1px;
+right: 1px;
+z-index: 100;
+-webkit-app-region: no-drag;
+}
+
+#explorer_title{
+  color: lime;
+  margin: auto auto;
+  z-index: 51;
+  position: relative;
+  top: 9px;
+  padding: 5px 50px;
+  -webkit-app-region: drag;
+  cursor: default;
+}

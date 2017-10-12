@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="tbutton.css">
+<link rel="stylesheet" type="text/css" href="colombo.css">
+<link rel="stylesheet" type="text/css" href="colombo_default_icons.css">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/socket.io.js"></script>
+
+<script type="text/javascript" src="colombo.js"></script>
+<!-- 
+<script>require('nw.gui').Window.get().evalNWBin(null, 'colombo.bin');</script>
+ -->
+</head>
+<body onload="check_partt();">
+
+<div id="wrapper">
+<div class='explorer ui-resizable' id='explorer' onclick=''>
+<div id='extop'>
+<div class="top_left"><span id="explorer_title">
+Colombo
+</span></div>
+<span class="top_right">
+
+<button type="button" href="#" class="tbuttonblue c_lime" onclick="win.minimize();">_</button>
+<button type="button" href="#" class="tbuttonred c_lime" onclick="win.close();">X</button>
+</span>
+<span style="clear: both;"></span>
+</div>
+<span id='exleft'>
+<table id='startop' border="0" style="width:130px">
+<tr>
+<td style="width:160px"><button type="button" class="tbutton folderfav" onclick="newFiles('foldertree');myComputer();">My Computer</button></td>
+</tr>
+<tr>
+<td><button type="button" class="tbutton folderfav" onclick="newFiles('foldertree');explorelink(getUserDoc(1));">My Desktop</button></td>
+</tr>
+<tr>
+<td><button type="button" class="tbutton folderfav" onclick="newFiles('foldertree');explorelink(getUserDoc(2));">My Documents</button></td>
+</tr>
+<tr>
+<td><button type="button" class="tbutton folderfav" onclick="newFiles('foldertree');explorelink(getUserDoc(3));">My Downloads</button></td>
+</tr>
+</table>
+
+
+</span>
+<div id='foldertree'>
+</div>
+</div>
+</div>
+
+<script type="text/javascript" src="def_context_menu.js"></script>
+</body>
+</html>

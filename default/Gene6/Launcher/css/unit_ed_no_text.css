@@ -1,0 +1,110 @@
+li{display:inline-block;}
+ul{padding:0;}
+
+body {
+-webkit-background-size: cover; /* For WebKit*/
+-moz-background-size: cover;/* Mozilla*/
+-o-background-size: cover;  /* Opera*/
+background-size: cover; /* Generic*/
+behavior:url("csshover.htc");
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+cursor:default;
+font-size:110%;
+overflow:hidden;
+margin:0px;
+-webkit-app-region: drag;
+}
+
+#wrapper::-webkit-scrollbar { width: 0 !important }
+#wrapper{
+height:100%;
+float: left;
+text-align:center;
+overflow:scroll;
+width:108px;
+}
+#wrapper2{
+float: right;
+width: 800px;
+text-align:center;
+overflow: hidden;
+-webkit-app-region: no-drag;
+}
+	
+#icons{
+margin: 0 auto;
+display:inline-block; 
+height: 100%;
+width:108px;
+border-radius: 20px;
+}
+
+.icon
+{
+color: transparent;
+width:96px;
+height:96px;
+overflow:hidden;
+display: inline-block;
+margin:1px 5px;
+-webkit-transition: all 1s ease;
+-webkit-filter: hue-rotate(0);
+//-webkit-filter: brightness(100%);
+text-align:center;
+z-index:7;
+font-size:100%;
+border-radius:5px;
+-webkit-app-region: no-drag;
+}
+
+
+.icon:hover {
+-webkit-filter: hue-rotate(180deg);
+color: transparent;
+background-color:rgba(250,250,250,0.8);
+}
+
+#iconsul li{
+display:block;
+	
+	}
+
+#settings{
+padding: 20px 20px 20px 25px;
+top:170px;
+min-width:400px;
+min-height:170px;
+display:none;
+color: lime;
+background-color: rgba(250,250,250,0.2);
+}
+
+.center{
+margin: 0 auto;
+display:inline-block; 
+}
+
+
+#save_order{display:none;}
+#add_icon_cell{display:none;}
+.bg_green{background:green;}
+
+.w400{
+width: 400px;
+display:inline-block; 
+border: 1px solid black;
+}
+
+.tal{text-align:left;}
+.tar{text-align:right;}
+.tac{text-align:center;}
+
+.w100p{width:100%;}
+.w40{width: 40px;}
+.w30{width: 30px;}
+#save_bg_color{display:none;}

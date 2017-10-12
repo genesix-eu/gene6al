@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="control_panel.css">
+
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/socket.io.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script src="control_panel.js"></script>
+<!-- 
+<script>require('nw.gui').Window.get().evalNWBin(null, 'control_panel.bin');</script>
+ -->
+</head>
+<body onload="">
+
+
+
+
+
+<div class='control ui-draggable ui-resizable' id='control' onclick=''>
+<span id='control_top'>
+<div class="top_left"><span id="ctrl_title">Settings
+</span></div>
+<span class="top_right">
+
+<button type="button" class="" onclick="win.minimize();">_</button>
+<button type="button" class="tcr" onclick="win.close();">X</button>
+</span>
+<span style="clear: both;"></span>
+</span>
+
+
+
+<span id='control_left'>
+
+<div class="btn-group-vertical w170">
+  <button type="button" class="btn custom_button_color1" id="bg1_b1" onclick="dontdisplay('control_settings_2');display('control_settings_1');display('submenu1_1');">App Launcher</button>
+  <button type="button" class="btn custom_button_color1" onclick="display('control_settings_2');dontdisplay('control_settings_1');dontdisplay('submenu1_1');">General Settings</button>
+  <!-- <button type="button" class="btn custom_button_color1" onclick="alert('soon');">Audio Player</button> -->
+</div>
+</span>
+
+
+
+
+
+
+
+<div id="alert_text">
+<div class="alert alert-danger"  id='save_order'>
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+<strong>Icons order changed!</strong> <button type="button" class="btn btn-success" onclick='save_order_call_home();'>Save current order.</button>
+</div>
+
+
+</div>
+
+
+
+
+<div id='control_content'>
+<div id="submenu1_1" class="btn-group">
+<button type="button" class="btn custom_button_color1" id="bg2_b1" onclick="display('cont1_1');dontdisplay('cont1_2');dontdisplay('cont1_3');dontdisplay('cont1_4');dontdisplay('cont1_5');">Add Icons</button>
+<button type="button" class="btn custom_button_color1" onclick="display('cont1_2');dontdisplay('cont1_1');dontdisplay('cont1_3');dontdisplay('cont1_4');dontdisplay('cont1_5');">Delete Icons</button>
+<button type="button" class="btn custom_button_color1" onclick="display('cont1_3');dontdisplay('cont1_1');dontdisplay('cont1_2');dontdisplay('cont1_4');dontdisplay('cont1_5');">Layout Select</button>
+<button type="button" class="btn custom_button_color1" onclick="display('cont1_4');dontdisplay('cont1_1');dontdisplay('cont1_2');dontdisplay('cont1_3');dontdisplay('cont1_5');">Background Color</button>
+<button type="button" class="btn custom_button_color1" onclick="display('cont1_5');dontdisplay('cont1_1');dontdisplay('cont1_2');dontdisplay('cont1_3');dontdisplay('cont1_4');">Other</button>
+</div>
+<br>
+<br>
+
+
+
+<div id='control_settings_1'>
+<br>
+<div id="cont1_1" class="d_none" style="display:block">
+<table>
+<tr><td class='tar'>
+Name:
+</td><td class='tal'>
+<input id='my_input_name' class="tcb" type="text" maxlength="24" onchange="check_Form();" />
+</td></tr>
+<tr><td class='tar'>
+Icon:
+</td><td class='tal'>
+<input id='my_input_icon'  type="file" accept="image/x-png, image/gif, image/jpeg" onchange="check_Form();" />
+</td></tr>
+<tr><td class='tar'>
+Aplication type:
+</td><td class='tal'>
+<select id='app_type_select' onchange="app_type_select();" class="tcb">
+  <option value="1">File or Program</option>
+  <option value="2">Folder</option>
+  <option value="3">Internet Link or WinKey+R command</option>
+  <option value="4">Javascript Function Name</option>
+  <option value="5" title="read readme.txt for more info">File or Program - Portable</option>
+  <option value="6" title="read readme.txt for more info">Folder - Portable</option>
+</select>
+</td></tr>
+
+<tr><td class='tar'>
+Aplications:
+</td><td id='type_of_selection'  class='tal'>
+<input id="my_input_app"   type="file" onchange="check_Form();" /> <input type="hidden" id="my_app_type" value="1">	
+</td></tr>
+
+<tr id='add_icon_cell'><td class='tar'>Add:</td><td class='' >
+<button type="button" class="tcb" id='add_icon' onclick='add_icon();' >Add Icon</button>
+</td></tr>
+
+</table>
+</div>
+
+
+<div id="cont1_2" class="d_none">
+<br>
+<div class="form-group">
+<label for="delete_icon_selection">Delete:</label>
+<select id='delete_icon_selection' class="tcb"><script>
+for (index = 0; index < my_al_icons.length; ++index) {
+document.write('<option value="'+index+'">'+my_al_icons[index].name+'</option>');
+}
+</script>
+</select>
+<button type="button" id='delete_icon' class="btn btn-danger btn-sm" onclick='delete_icon();' >Delete</button>
+</div>
+</div>
+
+
+
+<div id="cont1_3" class="d_none">
+<br>
+<div class="form-group">
+<label for="theme_select">Select Theme:</label>
+<select id='theme_select' onchange="select_theme()" class="tcb">
+<option value="0">Select Theme</option>
+<option value="1">1 H Line</option>
+<option value="5">1 H Line w/o text</option>
+<option value="3">1 V Line</option>
+<option value="4">1 V Line w/o text</option>
+<option value="2">2 H Hex Grid Line</option>
+<option value="6">1 H Line w/o bg</option>
+<option value="7">1 H Line w/o text w/o bg</option>
+<option value="8">1 V Line w/o bg</option>
+<option value="9">1 V Line w/o text w/o bg</option>
+<option value="10">1 V Line w/o text w/o bg 4K</option>
+<option value="11">1 H Line w/o text w/o bg - wanna be</option>
+</select>
+</div>
+
+
+</div>
+
+<div id="cont1_4" class="d_none">
+<table>
+<tr><td class='p5' style="height:40px; width: 70px; display: table-cell;"> Color: </td>
+<td>
+<span class='w55 tac'>Red</span>
+<span class='w55 tac'>Green</span>
+<span class='w55 tac'>Blue</span>
+<span class='w55 tac'>Alpha</span>
+</td>
+</tr>
+<tr><td class='p5' style="height:40px; width: 70px; display: table-cell;">
+<button type="button" id='save_bg_color' class="btn btn-success btn-sm" onclick='save_bg_color();' > Save </button></td><td>
+<input type="number" id="bgr" class='w55 tcb' min="0" max="255" onchange="color_update();">
+<input type="number" id="bgg" class='w55 tcb' min="0" max="255" onchange="color_update();">
+<input type="number" id="bgb" class='w55 tcb' min="0" max="255" onchange="color_update();">
+<input type="number" id="bga" class='w55 tcb' min="0" max="1" step="0.05" onchange="color_update();">
+</td></tr>
+</table>
+</div>
+
+<div id="cont1_5" class="d_none">
+<br>
+<table>
+<tr><td colspan="2" class="tac">
+<button type="button" id='reload_btn' class='btn btn-default tcb' onclick='win.reload(); socket.emit("to_main", "reload");' >Reload</button>
+<button type="button" id='reload_btn' class='btn btn-default tcb' onclick="run_command(temp_dir+'/readme.rtf','1');" >Read Me</button>
+<button type="button" id='reload_btn' class='btn btn-default tcb' onclick="run_command(temp_dir+'/changelog.rtf','1');" >Change Log</button><br> <br> 
+<!-- Settings shortcut: Ctrl+Shift+S -->  <span id='portable_drive'></span>
+</td></tr>
+<tr><td colspan="2">
+<br>
+Default Icons: 
+
+<a onclick="run_command('http://creativecommons.org/licenses/by-nd/4.0/','1');" href="">Licence</a> | 
+<a onclick="run_command('http://martz90.deviantart.com/art/Hex-Icons-Pack-389706981','1');" href="">Iconset Homepage</a> | 
+<a onclick="run_command('http://www.iconarchive.com/show/hex-icons-by-martz90.html','1');" href="">iconarchive.com</a>
+</td></tr>
+</table>
+</div>
+
+
+<table id='' class='cntrl_table' style="display:block;">
+</table>
+</div>
+
+<div id='control_settings_2' style="display:none;">
+<br>
+<table id="control_settings_2_1" class=''>
+</table>
+</div>
+
+
+
+
+</div>
+<div class="footer">
+<a  onclick="run_command('http://genesix.eu/','1');" href="">Copyright: genesix.eu</a>  |  info@genesix.eu | 
+<a onclick="run_command('http://genesix.eu/project/gene6al/','1');" href="">Donate</a> | <a onclick="run_command('http://martz90.deviantart.com/art/Hex-Icons-Pack-389706981','1');" href="">Default Iconset</a>
+</div>
+</div>
+
+
+
+
+<script type="text/javascript" src="def_context_menu.js"></script>
+</body>
+<html>

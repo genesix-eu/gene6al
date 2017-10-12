@@ -1,0 +1,10 @@
+{
+  "name": "GeneSix-Post_Ofice",
+  "description": "GeneSix Post Ofice",
+  "author": "GeneSix.eu <admin@genesix.eu>",
+  "dependencies": {
+    "socket.io": "*",
+    "express": "*",
+    "colors": "*"
+  }
+  }

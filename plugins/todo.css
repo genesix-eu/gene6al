@@ -1,0 +1,78 @@
+﻿body{
+overflow: hidden;
+
+}
+
+#todo
+{
+position:absolute;
+right:0px;
+top:0px;
+}
+
+
+
+#todoframe
+{
+border: 0px;
+overflow: hidden;
+}
+.do
+{
+height:160px;
+width:280px;
+background-color: rgba(0,0,0,0.4);
+display:block;
+overflow: hidden;
+overflow-y: auto;
+border-radius: 5px;
+}
+
+.do::-webkit-scrollbar { width: 0 !important }
+
+.todoitm
+{
+color: lime;
+
+
+   
+}
+
+.add
+{
+position:absolute;
+top: 130px;
+left:17px;
+}
+
+#todoinput{
+width: 200px;
+
+}
+
+#todoframe{
+
+
+}
+
+#move_that_A{
+position: absolute;
+display: block;
+height: 60px;
+width: 280px;
+top: 0;
+left: 0;
+-webkit-app-region: drag;
+z-index: 1000;
+
+}
+
+#my_list{
+  position: relative;
+  top: -16px;
+  left: -40px;
+  width: 100%;
+  text-align: center;
+}
+
+ul{ list-style: none }

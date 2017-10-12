@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="tbutton.css">
+<link rel="stylesheet" type="text/css" href="cmd.css">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="cmd.js"></script>
+
+
+
+</head>
+<body onload="cmd();document.getElementById('command_input').focus();">
+<div id="wrapper">
+<div id="cmd_top">
+
+<div class="top_left"><span id="explorer_title">
+Console
+</span></div>
+<span class="top_right">
+
+<button type="button" href="#" class="tbuttonblue c_lime" onclick="win.minimize();">_</button>
+<button type="button" href="#" class="tbuttonred c_lime" onclick="win.close();">X</button>
+</span>
+<span style="clear: both;"></span>
+
+
+
+</div>
+<span id="terminalw">
+
+<textarea class="comm dnone"></textarea>
+
+
+
+
+
+
+
+
+<span id="teminalw_end"> </span>
+</span>
+<input type="text" id="command_input" name="command_inputt" >
+</div>
+
+<script type="text/javascript" src="def_context_menu.js"></script>
+</body>
+</html>
