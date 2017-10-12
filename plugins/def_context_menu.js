@@ -4,14 +4,23 @@ var menu = new gui.Menu();
 
 if (dev_mode==1){
 menu.append(new gui.MenuItem({
-label: 'Dev Option',
+label: 'Dev Tools',
 click: function() {
 
-if (win.isDevToolsOpen()) {
-win.closeDevTools();
-}else{
 win.showDevTools();
+
 }
+}));
+}
+
+
+
+if (dev_mode==1){
+menu.append(new gui.MenuItem({
+label: 'Reload',
+click: function() {
+
+win.reload();
 }
 }));
 }

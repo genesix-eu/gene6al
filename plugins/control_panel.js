@@ -2,8 +2,9 @@ var fs = require('fs');
 var os = require('os');
 var my_os_type = os.type();
 var force_portable=1;
-
-
+theme_mode = Number(localStorage.theme_mode);
+dev_mode = Number(localStorage.dev_mode);
+hide_seek = Number(localStorage.hide_seek);
 
 if (my_os_type==="Windows_NT" && force_portable==0) {
 var my_home_folder=process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
@@ -13,7 +14,8 @@ var my_home_folder = process.env['HOME'];}
 else if (force_portable==1 && my_os_type==="Windows_NT"){
 var temp_dir = process.cwd();
 temp_dir=temp_dir.replace(/\\/g,"/");
-var my_home_folder=temp_dir+"/default";
+// var my_home_folder=temp_dir+"/default";
+var my_home_folder=temp_dir+"/data";
 }
 else if(force_portable==1 && my_os_type === "Linux"){
 var temp_dir = process.cwd();
@@ -22,13 +24,13 @@ var my_home_folder=temp_dir+"/default";
 
 //console.log(my_home_folder);
 
-var my_ui_cfg_folder=my_home_folder+'/Gene6/UI';
+var my_ui_cfg_folder=my_home_folder+'/local';
 var my_ui_cfg_file=my_ui_cfg_folder+'/gene6ui-cfg.js';
 
 
-var my_al_cfg_folder=my_home_folder+'/Gene6/Launcher';
-var my_al_icons_folder=my_home_folder+'/Gene6/Launcher/icons/';
-var my_al_css_folder=my_home_folder+'/Gene6/Launcher/css/';
+var my_al_cfg_folder=my_home_folder+'/local';
+var my_al_icons_folder=my_home_folder+'/local/icons/';
+var my_al_css_folder=my_home_folder+'/local/css/';
 var my_al_cfg_file=my_al_cfg_folder+'/config.js';
 var my_al_json_file=my_al_cfg_folder+'/data.json';
 var al_json = require(my_al_json_file);
@@ -44,9 +46,9 @@ if (fs.existsSync(my_al_cfg_file)) {
 $("head").append('<script type="text/javascript" src="' +'file:///'+ my_al_cfg_file + '"></script>');
 }
 
-if (fs.existsSync(my_ui_cfg_file)) {
-$("head").append('<script type="text/javascript" src="' +'file:///'+ my_ui_cfg_file + '"></script>');
-}
+// if (fs.existsSync(my_ui_cfg_file)) {
+// $("head").append('<script type="text/javascript" src="' +'file:///'+ my_ui_cfg_file + '"></script>');
+// }
 
 
 
@@ -75,6 +77,12 @@ control();
 
 
 // Load icons dock background color input values from config
+bgr = Number(localStorage.bgr);
+bgg = Number(localStorage.bgg);
+bgb = Number(localStorage.bgb);
+bga = Number(localStorage.bga);
+
+
 document.getElementById('bgr').value=bgr;
 document.getElementById('bgg').value=bgg;
 document.getElementById('bgb').value=bgb;
@@ -89,6 +97,22 @@ if (fs.existsSync(entry+':/'+my_usb_tag)) {
 //var my_usb_drive=entry;
 $( "#portable_drive" ).html( "Portable Drive: "+entry );
 }
+});
+
+
+
+
+$('body').on('focus', '[contenteditable]', function() {
+    var $this = $(this);
+    $this.data('before', $this.html());
+    return $this;
+}).on('blur keyup paste input', '[contenteditable]', function() {
+    var $this = $(this);
+    if ($this.data('before') !== $this.html()) {
+        $this.data('before', $this.html());
+        $this.trigger('change');
+    }
+    return $this;
 });
 
 });
@@ -136,12 +160,20 @@ $( "#control_settings_2_1" ).append( '<tr><td class="w250"> Portable Mode: </td>
 else{
 $( "#control_settings_2_1" ).append( '<tr><td class="w250"> Portable Mode: </td><td> <div class="slideThree"> <input type="checkbox" value="None" id="pp_mode" name="check" /><label for="pp_mode"></label></div></td></tr>' );
   }*/
-	
-if(colombo == 1){
-$( "#control_settings_2_1" ).append( '<tr><td class="w250"> Enable Colombo: </td><td> <div class="slideThree"> <input type="checkbox" value="None" id="colombo" name="check" checked /><label for="colombo"></label></div></td></tr>' ); 
+    
+// if(colombo == 1){
+// $( "#control_settings_2_1" ).append( '<tr><td class="w250"> Enable Colombo: </td><td> <div class="slideThree"> <input type="checkbox" value="None" id="colombo" name="check" checked /><label for="colombo"></label></div></td></tr>' ); 
+// }
+// else{
+// $( "#control_settings_2_1" ).append( '<tr><td class="w250"> Enable Colombo: </td><td> <div class="slideThree"> <input type="checkbox" value="None" id="colombo" name="check" /><label for="colombo"></label></div></td></tr>' );
+//   }	
+
+
+if(hide_seek == 1){
+$( "#control_settings_2_1" ).append( '<tr><td class="w250"> Hide & Seek: </td><td> <div class="slideThree"> <input type="checkbox" value="None" id="hide_seek" name="check" checked /><label for="hide_seek"></label></div></td></tr>' ); 
 }
 else{
-$( "#control_settings_2_1" ).append( '<tr><td class="w250"> Enable Colombo: </td><td> <div class="slideThree"> <input type="checkbox" value="None" id="colombo" name="check" /><label for="colombo"></label></div></td></tr>' );
+$( "#control_settings_2_1" ).append( '<tr><td class="w250"> Hide & Seek: </td><td> <div class="slideThree"> <input type="checkbox" value="None" id="hide_seek" name="check" /><label for="hide_seek"></label></div></td></tr>' );
   }
 
 	
@@ -159,7 +191,12 @@ my_value=1;
 
 
 //change_settings(contrl_itm, my_value);
-change_settings_al(contrl_itm, my_value);
+
+
+//Window[contrl_itm]=my_value;
+localStorage[contrl_itm]=my_value;
+socket.emit("to_main", "reload");
+//change_settings_al(contrl_itm, my_value);
 
 
 });
@@ -217,12 +254,15 @@ e.style.display = 'none';
 
 
 function save_bg_color(){
-change_settings_al('bgr', new_bgr);
-setTimeout(function(){ change_settings_al('bgg', new_bgg); }, 600);
-setTimeout(function(){ change_settings_al('bgb', new_bgb); }, 1200);
-setTimeout(function(){ change_settings_al('bga', new_bga); }, 1800);
+localStorage.bgr = new_bgr;
+localStorage.bgg = new_bgg;
+localStorage.bgb = new_bgb;
+localStorage.bga = new_bga;
+
+//document.getElementById('icons').style.backgroundColor = 'rgba(' + new_bgr + ',' + new_bgg + ',' + new_bgb + ',' + new_bga + ')';
 document.getElementById("save_bg_color").style.display = "none";
-setTimeout(function(){ socket.emit('to_main', 'reload'); }, 2400);
+
+setTimeout(function(){ socket.emit('to_main', 'reload'); }, 500);
 
 }
 
@@ -351,13 +391,14 @@ new_bga = document.getElementById('bga').value;
 function select_theme(){
 var e = document.getElementById("theme_select");
 var theme_indx = e.options[e.selectedIndex].value;
-change_settings_al('theme_mode', theme_indx);
+localStorage.theme_mode = theme_indx;
+//change_settings_al('theme_mode', theme_indx);
 //setTimeout(function(){ win.reload(); }, 1000);
 socket.emit('to_main', 'reload');
 }
 
 function run_command(command, type ){
-gui.Shell.openItem(command);
+gui.Shell.openExternal(command);
 } 
 
 
@@ -378,6 +419,8 @@ document.getElementById("type_of_selection").innerHTML = '<input id="my_input_ap
 document.getElementById("type_of_selection").innerHTML = '<input title="read readme.txt for more info" id="my_input_app"   type="file" onchange="check_Form();" />  <input type="hidden" id="my_app_type" value="3">';
 }else if (my_app_indx==6){
 document.getElementById("type_of_selection").innerHTML = '<input title="read readme.txt for more info" id="my_input_app"   type="file" onchange="check_Form();"  nwdirectory /> <input type="hidden" id="my_app_type" value="3">';
+}else if (my_app_indx==7){
+document.getElementById("type_of_selection").innerHTML = '<input id="my_input_app" placeholder="Ctrl+V"  type="text" onchange="check_Form();" />  <input type="hidden" id="my_app_type" value="5">';
 }
 	
 }
@@ -491,3 +534,4 @@ fs.writeFile(my_al_json_file, json_text, function(err) {
 socket.emit('to_main', 'reload');
 win.reload();
 }
+

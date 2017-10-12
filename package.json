@@ -1,22 +1,23 @@
 {
   "main": "index.html",
-  "name": "gene6ui",
+  "name": "gene6al",
   "node-main": "server/index.js",
-  "description": "GeneSix AI",
-  "version": "0.25.0",
+  "description": "GeneSix AL",
+  "version": "0.31.0",
   "keywords": [ "GeneSix", "node-webkit", "genesix.eu", "nwjs", "shell", "user interface", "ui", "launcher" ],
+  "chromium-args": " --user-data-dir='./data/temp' --wm-window-animations-disabled",
   "window": {
-    "title": "GeneSix UI",
+    "title": "GeneSix AL",
     "icon": "img/app-draw.png",
     "as_desktop": true,
     "toolbar": false,
     "frame": false,
-    "width": 792,
-    "height": 552,
     "position": "center",
-    "show_in_taskbar": true,
+    "show_in_taskbar": false,
 	"transparent":true,
-    "fullscreen": false
+    "fullscreen": false,
+    "focus":true,
+    "resizable":true
   },
   "webkit": {
     "plugin": true
@@ -30,7 +31,8 @@
 	"licenses": [
    {
        "type": "BY-NC",
-       "url": "http://creativecommons.org/licenses/by-nc/4.0/"
+       "url": "https://creativecommons.org/licenses/by-nc/4.0/"
    }
 ]
+
 }

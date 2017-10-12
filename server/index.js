@@ -7,6 +7,7 @@ var socketio = require('socket.io');
 var express = require('express');
 var colors = require('colors');
 
+
 var app = express()
 , server = require('http').createServer(app)
 , io = socketio.listen(server);             // socket needs to listen on http server
@@ -52,4 +53,26 @@ socket.broadcast.emit('to_main',data);
   socket.on('disconnect', function(){});
 });
 
+// var robot = require("robotjs");
+// var x=13;
+// var y=37;
+
+// setInterval(getx_y, 333);
+
+// function getx_y( )
+// {
+//   var mouse = robot.getMousePos();
+//   x=mouse.x;
+//   y=mouse.y;
+//   //console.log("Mouse is at x:" + x + " y:" + y);
+//   //you can reset counter here
+//   if (x===0 && y===0){
+//   	var win = gui.Window.get();
+//   	win.focus();
+//   }
+// }
+
+
+
 }, 800);
+

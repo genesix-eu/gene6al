@@ -26,7 +26,7 @@
 </span></div>
 <span class="top_right">
 
-<button type="button" class="" onclick="win.minimize();">_</button>
+<button type="button" class="tcb" onclick="win.minimize();">_</button>
 <button type="button" class="tcr" onclick="win.close();">X</button>
 </span>
 <span style="clear: both;"></span>
@@ -94,10 +94,11 @@ Aplication type:
 <select id='app_type_select' onchange="app_type_select();" class="tcb">
   <option value="1">File or Program</option>
   <option value="2">Folder</option>
-  <option value="3">Internet Link or WinKey+R command</option>
+<!--   <option value="3">WinKey+R command</option> -->
   <option value="4">Javascript Function Name</option>
   <option value="5" title="read readme.txt for more info">File or Program - Portable</option>
   <option value="6" title="read readme.txt for more info">Folder - Portable</option>
+  <option value="7">Internet Link</option>
 </select>
 </td></tr>
 
@@ -139,15 +140,24 @@ document.write('<option value="'+index+'">'+my_al_icons[index].name+'</option>')
 <option value="0">Select Theme</option>
 <option value="1">1 H Line</option>
 <option value="5">1 H Line w/o text</option>
-<option value="3">1 V Line</option>
-<option value="4">1 V Line w/o text</option>
-<option value="2">2 H Hex Grid Line</option>
 <option value="6">1 H Line w/o bg</option>
 <option value="7">1 H Line w/o text w/o bg</option>
+
+<option value="10">1 H Line w/o text w/o bg BIG</option>
+<option value="11">1 H Line w/o text w/o bg - wanna be</option>
+
+<option value="2">2 H Hex Grid Line</option>
+
+<option value="3">1 V Line</option>
+<option value="4">1 V Line w/o text</option>
 <option value="8">1 V Line w/o bg</option>
 <option value="9">1 V Line w/o text w/o bg</option>
-<option value="10">1 V Line w/o text w/o bg 4K</option>
-<option value="11">1 H Line w/o text w/o bg - wanna be</option>
+
+
+
+
+
+<!-- <option value="12">United Pro</option> -->
 </select>
 </div>
 
@@ -210,8 +220,8 @@ Default Icons:
 
 </div>
 <div class="footer">
-<a  onclick="run_command('http://genesix.eu/','1');" href="">Copyright: genesix.eu</a>  |  info@genesix.eu | 
-<a onclick="run_command('http://genesix.eu/project/gene6al/','1');" href="">Donate</a> | <a onclick="run_command('http://martz90.deviantart.com/art/Hex-Icons-Pack-389706981','1');" href="">Default Iconset</a>
+<a  onclick="run_command('http://genesix.eu/','5');" href="">Copyright: genesix.eu</a>  |  admin@genesix.eu | 
+<a onclick="run_command('http://genesix.eu/project/gene6al/','5');" href="">Donate</a> | <a onclick="run_command('http://martz90.deviantart.com/art/Hex-Icons-Pack-389706981','5');" href="">Default Iconset</a>
 </div>
 </div>
 

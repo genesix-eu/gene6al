@@ -11,9 +11,9 @@ var win = gui.Window.open('plugins/colombo.html', {
   width: 792,
   height: 552,
   frame:false,
-  toolbar:false,
-  transparent:true,
-  resizable:false,
+
+  transparent:false,
+  resizable:true,
   focus:true
 });
 
@@ -76,22 +76,7 @@ var win = gui.Window.open('3dlogo.html', {
 }));
 }
 
-if (old_settings==1){
-menu.append(new gui.MenuItem({
-label: 'Settings old',
-click: function() {
-if (!window.screenTop && !window.screenY) {
-setTimeout(function(){ resize_window(); }, 2000);
-}
-//toggleFullscreen();
 
-
-win.toggleFullscreen();
-toggle_inline('settings');
-
-}
-}));
-}
 
 
 if (motivation==1){
@@ -114,15 +99,28 @@ var win = gui.Window.open('motivation/1.html', {
 
 if (dev_mode==1){
 menu.append(new gui.MenuItem({
-label: 'Dev Option',
+label: 'Dev Tools',
 click: function() {
 //alert(win.isDevToolsOpen());
-if (win.isDevToolsOpen()) {
-win.closeDevTools();
-}else if (dev_mode==1){
+//temp 1 Not working
+// if (win.isDevToolsOpen()) {
+// win.closeDevTools();
+// }else if (dev_mode==1){win.showDevTools();
+// }
 win.showDevTools();
+
+
+}
+}));
 }
 
+
+if (dev_mode==1){
+menu.append(new gui.MenuItem({
+label: 'Reload',
+click: function() {
+
+win.reload();
 }
 }));
 }
@@ -140,16 +138,13 @@ var win = gui.Window.open('plugins/control_panel.html', {
   width: 792,
   height: 552,
   frame:false,
-  toolbar:false, 
-  transparent:true,
+  
+  transparent:false,
   resizable:false
 });
 
 }
 }));
-
-
-
 
 
 
@@ -162,19 +157,21 @@ close();
 }));
 
 
-document.body.addEventListener('contextmenu', function(ev) { 
+
+
+
+
+
+document.body.addEventListener('contextmenu', function(ev) {
   ev.preventDefault();
   // Popup at place you click
   menu.popup(ev.x, ev.y);
   return false;
 }, false);
 
-function myExit()
-{
-close();
-}
 
-///////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
 // Create a tray icon
 var tray = new gui.Tray({ title: 'Tray', icon: 'img/app-draw.png' });
 
@@ -190,14 +187,24 @@ var menu_tray = new gui.Menu();
 
 
 menu_tray.append(new gui.MenuItem({
+label: 'Show',
+click: function() {
+win.show();
+}
+}));
+
+
+
+menu_tray.append(new gui.MenuItem({
 label: 'Dev Option',
 click: function() {
 //alert(win.isDevToolsOpen());
-if (win.isDevToolsOpen()) {
-win.closeDevTools();
-}else if (dev_mode==1){
+//temp1 Not Working 
+// if (win.isDevToolsOpen()) {
+// win.closeDevTools();
+// }else if (dev_mode==1){}
 win.showDevTools();
-}
+
 
 }
 }));
@@ -208,6 +215,8 @@ click: function() {
 close();
 }
 }));
+
+
 
 
 tray.menu = menu_tray;

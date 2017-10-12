@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Computer",
+    "id": "mycomputer",
+    "icon_name": "mycomputer.png",
+    "do_command": "%windir%/explorer.exe /e,::{20D04FE0-3AEA-1069-A2D8-08002B30309D}",
+    "do_type": "4"
+  },
+  {
+    "name": "Documents",
+    "id": "mydoc",
+    "icon_name": "mydoc.png",
+    "do_command": "%windir%/explorer.exe /e,::{450d8fba-ad25-11d0-98a8-0800361b1103}",
+    "do_type": "4"
+  },
+  {
+    "name": "Control",
+    "id": "cntrl",
+    "icon_name": "control.png",
+    "do_command": "%windir%/system32/control.exe",
+    "do_type": "4"
+  },
+  {
+    "name": "Chrome",
+    "id": "chrome",
+    "icon_name": "chrome3.png",
+    "do_command": "chrome.exe",
+    "do_type": "4"
+  },
+  {
+    "name": "Internet Explorer",
+    "id": "iexplore",
+    "icon_name": "internetexplorer.png",
+    "do_command": "iexplore",
+    "do_type": "1"
+  },
+  {
+    "name": "Youtube",
+    "id": "youtube",
+    "icon_name": "youtube.png",
+    "do_command": "https://www.youtube.com/",
+    "do_type": "5"
+  },
+  {
+    "name": "Genesix",
+    "id": "genesix",
+    "icon_name": "app.png",
+    "do_command": "http://genesix.eu/project/gene6al/",
+    "do_type": "5"
+  }
+]
