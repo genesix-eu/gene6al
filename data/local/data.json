@@ -21,20 +21,6 @@
     "do_type": "4"
   },
   {
-    "name": "Chrome",
-    "id": "chrome",
-    "icon_name": "chrome3.png",
-    "do_command": "chrome.exe",
-    "do_type": "4"
-  },
-  {
-    "name": "Internet Explorer",
-    "id": "iexplore",
-    "icon_name": "internetexplorer.png",
-    "do_command": "iexplore",
-    "do_type": "1"
-  },
-  {
     "name": "Youtube",
     "id": "youtube",
     "icon_name": "youtube.png",
