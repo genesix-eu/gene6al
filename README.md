@@ -1,3 +1,3 @@
-<a href="http://genesix.eu/project/gene6al/" GeneSix App Lancher</a> is aplication launcher created using HTML5, CSS3, Javascript and <a href="http://nwjs.io/">nwjs</a>.<br>
+<a href="http://genesix.eu/project/gene6al/">GeneSix App Lancher</a> is aplication launcher created using HTML5, CSS3, Javascript and <a href="http://nwjs.io/">nwjs</a>.<br>
 It can launch local file, folder, program, internet link and much more.<br>
 You can add custom icons, and edit style of icons, text, color, background color...
